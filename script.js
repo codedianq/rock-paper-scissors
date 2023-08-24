@@ -11,11 +11,10 @@ The game will end at first 5 rounds */
 
 // Create a variable called numGenerator (generate whole numbers from 1 - 3) for the basis of randomly return 'ROCK, 'PAPER' or 'SCISSORS'
 let numGenerator = Math.floor(Math.random() * 3 + 1)
-
+let computerChoice;
+let userChoice
 // Create a function called getComputerChoice that will randomly return either 'ROCK, 'PAPER' or 'SCISSORS'
 function getComputerChoice() {
-    
-    let computerChoice;
     if (numGenerator === 1) {
         computerChoice = 'ROCK';
     } else if (numGenerator === 2) {
@@ -28,14 +27,13 @@ function getComputerChoice() {
 
 //Create a function called getUserChoice. Will get the user choice either 'ROCK, 'PAPER' or 'SCISSORS'
 function getUserChoice() {
-
-    let userChoice = prompt('TYPE AND CHOOSE ONE:', 'ROCK, PAPER, OR SCISSORS?').toUpperCase();
+    userChoice = prompt('TYPE AND CHOOSE ONE:', 'ROCK, PAPER, OR SCISSORS?').toUpperCase();
     return userChoice
 }
 
-    let userScore = 0;
-    let computerScore = 0;
-    let tieScore = 0
+let userScore = 0;
+let computerScore = 0;
+let tieScore = 0
 
 // Create a function called playRound that plays a single round.
 function playRound(userSelection, computerSelection) {
@@ -74,13 +72,22 @@ function playRound(userSelection, computerSelection) {
 
 //  Create a function called game to make a 5 rounds of game and announce the winner
 function game() {
-    playRound(getUserChoice(), getComputerChoice())
-    playRound(getUserChoice(), getComputerChoice())
-    playRound(getUserChoice(), getComputerChoice())
-    playRound(getUserChoice(), getComputerChoice())
-    playRound(getUserChoice(), getComputerChoice())
+    console.log(playRound(getUserChoice(), getComputerChoice()));
+    console.log(playRound(getUserChoice(), getComputerChoice()));
+    console.log(playRound(getUserChoice(), getComputerChoice()));
+    console.log(playRound(getUserChoice(), getComputerChoice()));
+    console.log(playRound(getUserChoice(), getComputerChoice())); 
+    
+    if (userScore > computerScore) {
+        console.log(`You win against the computer with the final score of ${userScore}.`);
+    } else if (userScore < computerScore) {
+        console.log(`You lose against the computer with the final score of ${userScore}.`);
+    } else {
+        console.log();(`It's a tie game.`);
+    }
 }
 
+game();
 
 
 
