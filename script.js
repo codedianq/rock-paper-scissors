@@ -12,7 +12,7 @@ The game will end at first 5 rounds */
 // Create a variable called numGenerator (generate whole numbers from 1 - 3) for the basis of randomly return 'ROCK, 'PAPER' or 'SCISSORS'
 let numGenerator = Math.floor(Math.random() * 3 + 1)
 let computerChoice;
-let userChoice
+let userChoice;
 // Create a function called getComputerChoice that will randomly return either 'ROCK, 'PAPER' or 'SCISSORS'
 function getComputerChoice() {
     if (numGenerator === 1) {
