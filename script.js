@@ -14,10 +14,10 @@ let numGenerator = Math.floor(Math.random() * 3 + 1)
 let computerChoice;
 let userChoice;
 // Create a function called getComputerChoice that will randomly return either 'ROCK, 'PAPER' or 'SCISSORS'
-function getComputerChoice() {
-    if (numGenerator === 1) {
+function getComputerChoice(num) {
+    if (num === 1) {
         computerChoice = 'ROCK';
-    } else if (numGenerator === 2) {
+    } else if (num === 2) {
         computerChoice = 'PAPER';
     } else {
         computerChoice = 'SCISSORS';
@@ -26,7 +26,7 @@ function getComputerChoice() {
 }
 
 //Create a function called getUserChoice. Will get the user choice either 'ROCK, 'PAPER' or 'SCISSORS'
-function getUserChoice() {
+function getUserChoice(userChoice) {
     userChoice = prompt('TYPE AND CHOOSE ONE:', 'ROCK, PAPER, OR SCISSORS?').toUpperCase();
     return userChoice
 }
@@ -72,11 +72,11 @@ function playRound(userSelection, computerSelection) {
 
 //  Create a function called game to make a 5 rounds of game and announce the winner
 function game() {
-    console.log(playRound(getUserChoice(), getComputerChoice()));
-    console.log(playRound(getUserChoice(), getComputerChoice()));
-    console.log(playRound(getUserChoice(), getComputerChoice()));
-    console.log(playRound(getUserChoice(), getComputerChoice()));
-    console.log(playRound(getUserChoice(), getComputerChoice())); 
+    console.log(playRound(getUserChoice(userChoice), getComputerChoice(numGenerator)));
+    console.log(playRound(getUserChoice(userChoice), getComputerChoice(numGenerator)));
+    console.log(playRound(getUserChoice(userChoice), getComputerChoice(numGenerator)));
+    console.log(playRound(getUserChoice(userChoice), getComputerChoice(numGenerator)));
+    console.log(playRound(getUserChoice(userChoice), getComputerChoice(numGenerator))); 
     
     if (userScore > computerScore) {
         console.log(`You win against the computer with the final score of ${userScore}.`);
