@@ -103,6 +103,7 @@ function checkWinner(playerScore, computerScore) {
     }
 }
 
+
 //Create three buttons, one for each selection
 rock.addEventListener('click', () => {
     const playerSelection = 'rock';
