@@ -20,7 +20,15 @@ const scissors = document.querySelector('.scissors');
 
 //Reference to the div that shows the result
 const divResult = document.querySelector('.result');
-const para = document.createElement('p');
+const para = document.createElement('p');;
+const h1Winner = document.createElement('h1');
+
+//Reference for score board
+const scoreBoard = document.querySelector('.score-board');
+const h2User = document.querySelector('.h2-user');
+const h2Computer = document.querySelector('.h2-computer');
+const playerScoreCount = document.querySelector('.player-score');
+const computerScoreCount = document.querySelector('.computer-score');
 // Create a function called getComputerChoice() that will return either 'Rock', 'Paper', or 'Scissors'.
 function getComputerChoice() {
     let genIntNum = Math.floor((Math.random() * 3) + 1)
@@ -75,42 +83,49 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// Create a function called game() to play 5 round and also reports the score and the winner/loser at the end.
-// function game() {
-    
-//     for (let i = 0; i < 5; i++) {
-//         const playerSelection = prompt('Rock? Paper? or Scissors?').toLowerCase();
-        
-//         console.log(playRound(playerSelection, computerSelection));
-//         console.log(`Your score: ${playerScore} || Computer Score: ${computerScore} || Tie Score: ${tieScore}`);
-//     }
-//     if(playerScore > computerScore) {
-//         return console.log('Y O U  B E A T  T H E  C O M P U T E R ! ! !');
-//     } else if(computerScore > playerScore) {
-//         return console.log('Y O U  A R E  B E A T E N  B Y  T H E  C O M P U T E R ? ? ? ? ?');
-//     } else {
-//         return console.log('H M M M !  N O T  B A D . . .');
-//     }
-// }
+function showScore(playerScore, computerScore) {
+    playerScoreCount.textContent = `${playerScore}`
+    h2User.appendChild(playerScoreCount);
+    scoreBoard.appendChild(h2User);
 
-// game();
+    computerScoreCount.textContent = `${computerScore}`
+    h2Computer.appendChild(computerScoreCount);
+    scoreBoard.appendChild(h2Computer);
+}
+
+function checkWinner(playerScore, computerScore) {
+    if(playerScore === 5) {
+        h1Winner.textContent = `YOU BEAT THE COMPUTER WITH THE SCORE OF ${playerScore} OVER ${computerScore}.`
+        divResult.appendChild(h1Winner);
+    } else if(computerScore === 5) {
+        h1Winner.textContent = `YOU ARE BEATEN BY A COMPUTER WITH THE SCORE OF ${computerScore} OVER ${playerScore}.`
+        divResult.appendChild(h1Winner);
+    }
+}
+
 //Create three buttons, one for each selection
 rock.addEventListener('click', () => {
     const playerSelection = 'rock';
     const computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
+    showScore(playerScore, computerScore)
+    checkWinner(playerScore, computerScore)
 });
 
 paper.addEventListener('click', () => {
     const playerSelection = 'paper';
     const computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
+    showScore(playerScore, computerScore)
+    checkWinner(playerScore, computerScore)
 });
 
 scissors.addEventListener('click', () => {
     const playerSelection = 'scissors';
     const computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
+    showScore(playerScore, computerScore)
+    checkWinner(playerScore, computerScore)
 });
 
 // Add a div for displaying results and change all of your console.logs into DOM methods.
