@@ -13,16 +13,23 @@ let playerScore = 0
 let computerScore = 0
 let tieScore = 0
 
+//Reference the buttons
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+
+//Reference to the div that shows the result
+const divResult = document.querySelector('.result');
+const para = document.createElement('p');
 // Create a function called getComputerChoice() that will return either 'Rock', 'Paper', or 'Scissors'.
 function getComputerChoice() {
-    let computerChoice;
     let genIntNum = Math.floor((Math.random() * 3) + 1)
     if(genIntNum === 1) {
-        return computerChoice = 'rock';
+        return computerSelection = 'rock';
     }else if(genIntNum === 2) {
-        return computerChoice = 'paper';
+        return computerSelection = 'paper';
     }else if(genIntNum === 3) {
-        return computerChoice = 'scissors'
+        return computerSelection = 'scissors'
     }
 }
 
@@ -31,66 +38,81 @@ function playRound(playerSelection, computerSelection) {
     console.log(`User: ${playerSelection} || Computer: ${computerSelection}`);
     if(playerSelection === 'rock' && computerSelection === 'rock') {
         tieScore++;
-        return `Tied! Nothing happens between ${playerSelection} and ${computerSelection}`;
+        para.textContent = `Tied! Nothing happens between ${playerSelection} and ${computerSelection}`;
+        divResult.appendChild(para);
     } else if(playerSelection === 'paper' && computerSelection === 'paper') {
         tieScore++;
-        return `Tied! Nothing happens between ${playerSelection} and ${computerSelection}`;
+        para.textContent = `Tied! Nothing happens between ${playerSelection} and ${computerSelection}`;
+        divResult.appendChild(para);
     } else if(playerSelection === 'scissors' && computerSelection === 'scissors') {
         tieScore++;
-        return `Tied! Nothing happens between ${playerSelection} and ${computerSelection}`;
+        para.textContent = `Tied! Nothing happens between ${playerSelection} and ${computerSelection}`;
+        divResult.appendChild(para);
     } else if(playerSelection === 'rock' && computerSelection === 'paper') {
         computerScore++;
-        return `You lose! ${computerSelection} beats ${playerSelection}`;
+        para.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+        divResult.appendChild(para);
     } else if(playerSelection === 'paper' && computerSelection === 'scissors') {
         computerScore++;
-        return `You lose! ${computerSelection} beats ${playerSelection}`;
+        para.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+        divResult.appendChild(para);
     } else if(playerSelection === 'scissors' && computerSelection === 'rock') {
         computerScore++;
-        return `You lose! ${computerSelection} beats ${playerSelection}`;
+        para.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+        divResult.appendChild(para);
     } else if(playerSelection === 'paper' && computerSelection === 'rock') {
         playerScore++;
-        return `You win! ${playerSelection} beats ${computerSelection}`;
+        para.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+        divResult.appendChild(para);
     } else if(playerSelection === 'scissors' && computerSelection === 'paper') {
         playerScore++;
-        return `You win! ${playerSelection} beats ${computerSelection}`;
+        para.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+        divResult.appendChild(para);
     } else if(playerSelection === 'rock' && computerSelection === 'scissors') {
         playerScore++;
-        return `You win! ${playerSelection} beats ${computerSelection}`;
+        para.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+        divResult.appendChild(para);
     }
 }
 
 // Create a function called game() to play 5 round and also reports the score and the winner/loser at the end.
-/*function game() {
+// function game() {
     
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt('Rock? Paper? or Scissors?').toLowerCase();
+//     for (let i = 0; i < 5; i++) {
+//         const playerSelection = prompt('Rock? Paper? or Scissors?').toLowerCase();
         
-        console.log(playRound(playerSelection, computerSelection));
-        console.log(`Your score: ${playerScore} || Computer Score: ${computerScore} || Tie Score: ${tieScore}`);
-    }
-    if(playerScore > computerScore) {
-        return console.log('Y O U  B E A T  T H E  C O M P U T E R ! ! !');
-    } else if(computerScore > playerScore) {
-        return console.log('Y O U  A R E  B E A T E N  B Y  T H E  C O M P U T E R ? ? ? ? ?');
-    } else {
-        return console.log('H M M M !  N O T  B A D . . .');
-    }
-}
+//         console.log(playRound(playerSelection, computerSelection));
+//         console.log(`Your score: ${playerScore} || Computer Score: ${computerScore} || Tie Score: ${tieScore}`);
+//     }
+//     if(playerScore > computerScore) {
+//         return console.log('Y O U  B E A T  T H E  C O M P U T E R ! ! !');
+//     } else if(computerScore > playerScore) {
+//         return console.log('Y O U  A R E  B E A T E N  B Y  T H E  C O M P U T E R ? ? ? ? ?');
+//     } else {
+//         return console.log('H M M M !  N O T  B A D . . .');
+//     }
+// }
 
-game();*/
-const computerSelection = getComputerChoice();
+// game();
 //Create three buttons, one for each selection
-const rock = document.querySelector('.rock');
 rock.addEventListener('click', () => {
-    playRound('rock', computerSelection);
+    const playerSelection = 'rock';
+    const computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
 });
 
-const paper = document.querySelector('.paper');
 paper.addEventListener('click', () => {
-    playRound('paper', computerSelection);
+    const playerSelection = 'paper';
+    const computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
 });
 
-const scissors = document.querySelector('.scissors');
 scissors.addEventListener('click', () => {
-    playRound('scissors', computerSelection);
+    const playerSelection = 'scissors';
+    const computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
 });
+
+// Add a div for displaying results and change all of your console.logs into DOM methods.
+
+
