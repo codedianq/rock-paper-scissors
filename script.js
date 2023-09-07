@@ -60,11 +60,11 @@ function playRound(playerSelection, computerSelection) {
 }
 
 // Create a function called game() to play 5 round and also reports the score and the winner/loser at the end.
-function game() {
+/*function game() {
     
     for (let i = 0; i < 5; i++) {
         const playerSelection = prompt('Rock? Paper? or Scissors?').toLowerCase();
-        const computerSelection = getComputerChoice();
+        
         console.log(playRound(playerSelection, computerSelection));
         console.log(`Your score: ${playerScore} || Computer Score: ${computerScore} || Tie Score: ${tieScore}`);
     }
@@ -77,4 +77,20 @@ function game() {
     }
 }
 
-game();
+game();*/
+const computerSelection = getComputerChoice();
+//Create three buttons, one for each selection
+const rock = document.querySelector('.rock');
+rock.addEventListener('click', () => {
+    playRound('rock', computerSelection);
+});
+
+const paper = document.querySelector('.paper');
+paper.addEventListener('click', () => {
+    playRound('paper', computerSelection);
+});
+
+const scissors = document.querySelector('.scissors');
+scissors.addEventListener('click', () => {
+    playRound('scissors', computerSelection);
+});
